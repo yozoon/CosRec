@@ -85,7 +85,7 @@ class Recommender(object):
         nparas = sum(p.numel() for p in self._net.parameters())
         print ('Number of model parameters: {}M'.format(nparas/1e6))
 
-    def fit(self, train, test, verbose=False):
+    def fit(self, train, test, verbose=False, start_epoch=0, best_map=0):
         """
         The general training loop to fit the model
 
@@ -115,11 +115,8 @@ class Recommender(object):
         if not self._initialized:
             self._initialize(train)
 
-        start_epoch = 0 
-        best_map = 0 
-
         ### create directory if not exists
-        save_dir = args.save_root + args.dataset + '/'
+        save_dir = self.args.save_root + self.args.dataset + '/'
         if not os.path.exists(save_dir):
             os.makedirs(save_dir)
 
@@ -207,6 +204,7 @@ class Recommender(object):
                     'epoch': epoch_num+1,
                     'state_dict': self._net.state_dict(),
                     'optimizer': self._optimizer.state_dict(),
+                    'best_map': best_map,
                     }, checkpoint_name, save_dir)
 
             else:

@@ -1,5 +1,7 @@
 ## CosRec: 2D Convolutional Neural Networks for Sequential Recommendation
 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/yozoon/CosRec/blob/master/main.ipynb)
+
 This is our PyTorch implementation for the paper:
 
 *CosRec: 2D Convolutional Neural Networks for Sequential Recommendation, CIKM-2019*
